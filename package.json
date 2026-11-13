@@ -1,0 +1,36 @@
+{
+  "name": "seeable-hub",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "check:site": "node scripts/verify-site.mjs",
+    "format:check": "prettier --check --ignore-unknown app components data scripts *.json *.mjs *.ts *.md"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^7.0.6",
+    "@radix-ui/react-accordion": "^1.3.1",
+    "@tailwindcss/postcss": "^4.3.5",
+    "lucide-react": "^1.72.0",
+    "motion": "^14.13.0",
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-hook-form": "^7.92.0",
+    "tailwindcss": "^4.3.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.6",
+    "playwright": "^1.65.0",
+    "prettier": "^3.10.1",
+    "typescript": "^6.0.3"
+  }
+}
