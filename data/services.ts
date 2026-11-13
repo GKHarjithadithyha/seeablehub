@@ -10,6 +10,13 @@ export type Service = {
   icon: "code" | "layers" | "brain" | "message" | "phone" | "nfc" | "design" | "cloud";
   seoTitle: string;
   metaDescription: string;
+  mobile?: {
+    headline: string;
+    description: string;
+    intro: string;
+    capabilities: { title: string; description: string }[];
+    benefits: string[];
+  };
 };
 
 export const services: Service[] = [
@@ -238,5 +245,178 @@ export const services: Service[] = [
       "Connect business systems, automate workflows and build a scalable technology foundation with SEEABLE HUB.",
   },
 ];
+
+const mobileServiceCopy: Record<string, NonNullable<Service["mobile"]>> = {
+  "website-design-development": {
+    headline: "Websites That Make Your Business Stand Out.",
+    description: "Responsive websites, e-commerce stores and web applications.",
+    intro:
+      "A clear, responsive website that represents your brand and guides visitors to take action.",
+    capabilities: [
+      ["Business & Corporate Websites", "Present your company, services and identity."],
+      ["Custom Website Design", "Brand-led layouts and responsive interfaces."],
+      ["E-commerce Websites", "Product catalogues, carts, checkout and payments."],
+      ["Landing Pages", "Focused pages for services, campaigns and lead generation."],
+      ["Portfolio Websites", "Showcase your work, skills and expertise."],
+      ["Custom Web Applications", "Portals, dashboards, booking tools and platforms."],
+      [
+        "Website Redesign & Optimisation",
+        "Improve design, usability, mobile experience and performance.",
+      ],
+    ].map(([title, description]) => ({ title, description })),
+    benefits: [
+      "Responsive by design",
+      "User-focused",
+      "Performance-conscious",
+      "SEO-ready foundations",
+      "Built to evolve",
+    ],
+  },
+  "custom-software-development": {
+    headline: "Software Built Around Your Business.",
+    description: "CRM, ERP, SaaS and business platforms built around your workflow.",
+    intro:
+      "We build tailored software that simplifies operations, solves business challenges and supports growth.",
+    capabilities: [
+      [
+        "Business Management Systems",
+        "Manage operations, resources and workflows in one platform.",
+      ],
+      ["CRM & ERP Solutions", "Connect customers, business processes and data."],
+      ["SaaS Applications", "Turn product ideas into software platforms."],
+      ["Custom Web Applications", "Build interactive tools around your requirements."],
+      ["Workflow Automation", "Reduce repetitive tasks and improve efficiency."],
+      ["Dashboards & Analytics", "Turn business data into useful insights."],
+    ].map(([title, description]) => ({ title, description })),
+    benefits: [
+      "Built around you",
+      "Designed for growth",
+      "Modern engineering",
+      "End-to-end development",
+    ],
+  },
+  "ai-machine-learning": {
+    headline: "Make Your Business Smarter with AI.",
+    description: "Intelligent applications, predictive insights and AI-powered automation.",
+    intro:
+      "We develop AI-powered applications that help businesses automate tasks, understand information and make better-informed decisions.",
+    capabilities: [
+      ["AI Application Development", "Build intelligent applications around your needs."],
+      ["Generative AI Integration", "Connect AI models with products and workflows."],
+      ["Machine Learning", "Use data-driven models to identify patterns."],
+      ["Document Processing", "Extract and organise information from documents."],
+      ["Predictive Analytics", "Explore trends to support planning and decisions."],
+      ["AI-Powered Automation", "Simplify repetitive processes with intelligent tools."],
+    ].map(([title, description]) => ({ title, description })),
+    benefits: [
+      "Purpose-driven AI",
+      "Custom development",
+      "Practical integration",
+      "Scalable solutions",
+    ],
+  },
+  "chatbots-voice-ai": {
+    headline: "Conversations Powered by Intelligence.",
+    description: "Chatbots, WhatsApp automation and voice agents for customer interactions.",
+    intro:
+      "We build chatbots and voice AI solutions that automate enquiries, support customers and streamline communication.",
+    capabilities: [
+      ["AI Chatbots", "Answer questions with relevant responses."],
+      ["WhatsApp Chatbots", "Automate customer enquiries and interactions."],
+      ["AI Voice Agents", "Create voice assistants that handle conversations."],
+      ["Customer Support Automation", "Automate routine questions and support."],
+      ["Lead & Enquiry Bots", "Capture potential customers and organise enquiries."],
+      ["Custom Conversational AI", "Connect assistants to your business workflows."],
+    ].map(([title, description]) => ({ title, description })),
+    benefits: [
+      "Always-available interactions",
+      "Business-focused automation",
+      "Custom integrations",
+      "Scalable experiences",
+    ],
+  },
+  "mobile-app-development": {
+    headline: "Ideas That Move With You.",
+    description: "Android, iOS and cross-platform apps for customers and teams.",
+    intro:
+      "We build custom mobile apps with intuitive interfaces, useful features and reliable integrations.",
+    capabilities: [
+      ["Android App Development", "Custom applications for Android devices."],
+      ["iOS App Development", "Mobile experiences for Apple devices."],
+      ["Cross-Platform Apps", "Build for multiple platforms efficiently."],
+      ["Business Applications", "Digitise internal operations with purpose-built tools."],
+      ["E-commerce Applications", "Mobile shopping with product and payment features."],
+      ["API & Backend Integration", "Connect apps with databases, APIs and systems."],
+    ].map(([title, description]) => ({ title, description })),
+    benefits: [
+      "User-centred design",
+      "Custom development",
+      "Modern technology",
+      "End-to-end support",
+    ],
+  },
+  "nfc-smart-integrations": {
+    headline: "Connect the Physical World to Digital.",
+    description: "Digital business cards, smart menus, review systems and QR experiences.",
+    intro:
+      "We create NFC and QR experiences that help businesses share information and connect with customers.",
+    capabilities: [
+      ["NFC Digital Business Cards", "Share contact details and profiles with a tap."],
+      ["NFC Review Cards", "Help customers reach your business review page."],
+      ["Smart QR Menus", "Give customers access to digital menus."],
+      ["QR Experiences", "Connect people to websites, products and information."],
+      ["NFC Information Systems", "Share digital information through NFC touchpoints."],
+      ["Custom NFC Integrations", "Connect NFC with your apps, websites and systems."],
+    ].map(([title, description]) => ({ title, description })),
+    benefits: [
+      "Simple and convenient",
+      "Business-focused",
+      "Connected technology",
+      "Custom solutions",
+    ],
+  },
+  "ui-ux-product-design": {
+    headline: "Great Experiences Begin With Great Design.",
+    description: "Clear, intuitive interfaces for websites, apps and software products.",
+    intro:
+      "We create intuitive interfaces and thoughtful user experiences that bring products, people and technology together.",
+    capabilities: [
+      ["Website UI/UX", "Create engaging websites with clear layouts and navigation."],
+      ["Mobile App Design", "Design intuitive interfaces for mobile applications."],
+      ["SaaS Dashboard Design", "Make complex information easier to use."],
+      ["Wireframes & Prototypes", "Explore layouts and journeys before development."],
+      ["User Journey Mapping", "Understand user needs and improve interaction flows."],
+      ["Design Systems", "Create consistent, reusable interface components."],
+    ].map(([title, description]) => ({ title, description })),
+    benefits: [
+      "User-centred thinking",
+      "Visual consistency",
+      "Function meets aesthetics",
+      "Development-ready",
+    ],
+  },
+  "cloud-api-business-automation": {
+    headline: "Connect. Automate. Scale.",
+    description: "Connected systems, cloud solutions and streamlined workflows.",
+    intro:
+      "We build cloud-based solutions, integrate business systems and automate workflows to help organisations operate smarter.",
+    capabilities: [
+      ["Cloud Solutions", "Deploy and manage applications on scalable infrastructure."],
+      ["API Development & Integration", "Connect applications, platforms and services."],
+      ["Workflow Automation", "Simplify repetitive processes and reduce manual work."],
+      ["Database Architecture", "Structure reliable data foundations for applications."],
+      ["System Integration", "Bring business tools together in connected workflows."],
+      ["Application Migration & Support", "Modernise applications and support technical needs."],
+    ].map(([title, description]) => ({ title, description })),
+    benefits: [
+      "Seamless integration",
+      "Operational efficiency",
+      "Scalable infrastructure",
+      "Reliable engineering",
+    ],
+  },
+};
+
+for (const service of services) service.mobile = mobileServiceCopy[service.slug];
 
 export const findService = (slug: string) => services.find((service) => service.slug === slug);

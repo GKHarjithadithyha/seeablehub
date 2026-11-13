@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Brand } from "@/components/brand";
 import { services } from "@/data/services";
+import { industries } from "@/data/industries";
 import { contactEmail, whatsappUrl } from "@/data/contact";
 
 export function Footer() {
@@ -12,8 +13,14 @@ export function Footer() {
           <div className="footer-about">
             <Brand />
             <p>
-              Building digital experiences, intelligent solutions and innovative software for
-              businesses ready to move forward.
+              <span className="desktop-copy">
+                Building digital experiences, intelligent solutions and innovative software for
+                businesses ready to move forward.
+              </span>
+              <span className="mobile-copy">
+                We build digital experiences, intelligent solutions and software that help
+                businesses move forward.
+              </span>
             </p>
             <Link className="footer-link" href="/contact">
               Get in touch <ArrowUpRight size={15} />
@@ -49,6 +56,40 @@ export function Footer() {
             <Link className="footer-link" href="/contact">
               Tell us about it <ArrowUpRight size={15} />
             </Link>
+          </div>
+          <div className="mobile-footer-groups" aria-label="Explore SEEABLE HUB">
+            <details>
+              <summary>Company</summary>
+              <div>
+                <Link href="/">Home</Link>
+                <Link href="/about">About</Link>
+                <Link href="/services">Services</Link>
+                <Link href="/industries">Industries</Link>
+                <Link href="/work">Our Work</Link>
+                <Link href="/faq">FAQ</Link>
+                <Link href="/contact">Contact</Link>
+              </div>
+            </details>
+            <details>
+              <summary>Services</summary>
+              <div>
+                {services.map((item) => (
+                  <Link key={item.slug} href={`/services/${item.slug}`}>
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            </details>
+            <details>
+              <summary>Industries</summary>
+              <div>
+                {industries.map((item) => (
+                  <Link key={item.slug} href={`/industries#${item.slug}`}>
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </details>
           </div>
         </div>
         <div className="footer-bottom">

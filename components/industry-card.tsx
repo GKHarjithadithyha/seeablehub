@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import type { Industry } from "@/data/industries";
+import { ResponsiveCopy } from "@/components/sections";
 
 export function IndustryCard({ industry, number }: { industry: Industry; number: string }) {
   const Icon = industry.icon;
@@ -13,16 +14,31 @@ export function IndustryCard({ industry, number }: { industry: Industry; number:
         <span className="industry-card-number">{number}</span>
       </div>
       <h3>{industry.name}</h3>
-      <p>{industry.description}</p>
-      <h4>Solutions include</h4>
-      <ul>
-        {industry.solutions.map((solution) => (
-          <li key={solution}>
-            <Check size={14} aria-hidden="true" />
-            <span>{solution}</span>
-          </li>
-        ))}
-      </ul>
+      <p>
+        <ResponsiveCopy desktop={industry.description} mobile={industry.mobileDescription} />
+      </p>
+      <details className="mobile-industry-solutions">
+        <summary>Explore capabilities</summary>
+        <ul>
+          {industry.solutions.map((solution) => (
+            <li key={solution}>
+              <Check size={14} aria-hidden="true" />
+              <span>{solution}</span>
+            </li>
+          ))}
+        </ul>
+      </details>
+      <div className="desktop-industry-solutions">
+        <h4>Solutions include</h4>
+        <ul>
+          {industry.solutions.map((solution) => (
+            <li key={solution}>
+              <Check size={14} aria-hidden="true" />
+              <span>{solution}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </article>
   );
 }

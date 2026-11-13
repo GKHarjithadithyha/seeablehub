@@ -6,17 +6,20 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { Brand } from "@/components/brand";
 import { services } from "@/data/services";
+import { industries } from "@/data/industries";
 
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
+  const [mobileIndustries, setMobileIndustries] = useState(false);
   const [desktopMenu, setDesktopMenu] = useState<"services" | null>(null);
   const root = useRef<HTMLElement>(null);
   const mobileToggle = useRef<HTMLButtonElement>(null);
   const closeMobileMenu = useCallback(() => {
     setMobileOpen(false);
     setMobileServices(false);
+    setMobileIndustries(false);
   }, []);
 
   useEffect(() => {
@@ -188,13 +191,35 @@ export function Header() {
           >
             Solutions
           </Link>
-          <Link
-            href="/industries"
-            aria-current={pathname === "/industries" ? "page" : undefined}
-            onClick={closeMobileMenu}
+          <button
+            className="mobile-expand"
+            aria-expanded={mobileIndustries}
+            aria-controls="mobile-industries-links"
+            onClick={() => setMobileIndustries(!mobileIndustries)}
           >
-            Industries
-          </Link>
+            Industries <ChevronDown size={16} />
+          </button>
+          {mobileIndustries && (
+            <div
+              className="mobile-subnav"
+              id="mobile-industries-links"
+              role="group"
+              aria-label="Industry links"
+            >
+              <Link href="/industries" onClick={closeMobileMenu}>
+                All Industries
+              </Link>
+              {industries.map((industry) => (
+                <Link
+                  key={industry.slug}
+                  href={`/industries#${industry.slug}`}
+                  onClick={closeMobileMenu}
+                >
+                  {industry.name}
+                </Link>
+              ))}
+            </div>
+          )}
           <Link
             href="/work"
             aria-current={pathname === "/work" ? "page" : undefined}
@@ -222,7 +247,7 @@ export function Header() {
           href="/contact"
           onClick={closeMobileMenu}
         >
-          Get a Quote <ArrowUpRight size={16} />
+          Start a Project <ArrowUpRight size={16} />
         </Link>
       </nav>
     </header>

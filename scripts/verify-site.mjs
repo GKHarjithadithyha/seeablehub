@@ -48,8 +48,10 @@ try {
 
   const viewports = [
     { width: 320, height: 640 },
+    { width: 360, height: 740 },
     { width: 375, height: 812 },
     { width: 390, height: 844 },
+    { width: 414, height: 896 },
     { width: 430, height: 932 },
     { width: 768, height: 1024 },
     { width: 1366, height: 768 },
@@ -113,8 +115,8 @@ try {
   await mobileQuote.click();
   const quoteLink = page
     .getByRole("navigation", { name: "Mobile navigation" })
-    .getByRole("link", { name: "Get a Quote" });
-  if (!(await quoteLink.isVisible())) throw new Error("Mobile Get a Quote CTA is missing");
+    .getByRole("link", { name: "Start a Project" });
+  if (!(await quoteLink.isVisible())) throw new Error("Mobile Start a Project CTA is missing");
   await quoteLink.click();
   await page.waitForURL("**/contact");
 
@@ -127,11 +129,10 @@ try {
     "Home",
     "About",
     "Solutions",
-    "Industries",
     "Our Work",
     "Resources",
     "FAQ",
-    "Get a Quote",
+    "Start a Project",
   ]) {
     if (!(await mobileNavigation.getByRole("link", { name: label, exact: true }).isVisible()))
       throw new Error(`Mobile navigation link ${label} is not visible at 320px`);
@@ -145,7 +146,16 @@ try {
   const serviceLinks = mobileNavigation.locator("#mobile-services-links a");
   if ((await serviceLinks.count()) !== 9)
     throw new Error("Mobile Services menu is missing one or more service links");
-  const stickyQuote = mobileNavigation.getByRole("link", { name: "Get a Quote" });
+  const industriesToggle = mobileNavigation.getByRole("button", {
+    name: "Industries",
+    exact: true,
+  });
+  await industriesToggle.click();
+  if ((await industriesToggle.getAttribute("aria-expanded")) !== "true")
+    throw new Error("Mobile Industries menu did not expand at 320px");
+  if ((await mobileNavigation.locator("#mobile-industries-links a").count()) !== 9)
+    throw new Error("Mobile Industries menu is missing one or more industry links");
+  const stickyQuote = mobileNavigation.getByRole("link", { name: "Start a Project" });
   const quoteBounds = await stickyQuote.boundingBox();
   const menuBounds = await mobileNavigation.boundingBox();
   if (
@@ -153,9 +163,18 @@ try {
     !menuBounds ||
     quoteBounds.y + quoteBounds.height > menuBounds.y + menuBounds.height
   )
-    throw new Error("Mobile Get a Quote CTA is obscured when Services is expanded");
+    throw new Error("Mobile Start a Project CTA is obscured when an accordion is expanded");
   await page.screenshot({ path: `${screenshotDir}/mobile-services-open-320.png` });
-  await serviceLinks.getByText("Mobile Application Development").click();
+  await mobileNavigation.getByRole("link", { name: "All Industries", exact: true }).click();
+  await page.waitForURL("**/industries");
+  if (await page.getByRole("button", { name: "Close menu" }).count())
+    throw new Error("Selecting All Industries did not close the mobile navigation");
+
+  await page.getByRole("button", { name: "Open menu" }).click();
+  const reopenedNavigation = page.getByRole("navigation", { name: "Mobile navigation" });
+  await reopenedNavigation.getByRole("button", { name: "Services", exact: true }).click();
+  const reopenedServiceLinks = reopenedNavigation.locator("#mobile-services-links a");
+  await reopenedServiceLinks.getByText("Mobile Application Development").click();
   await page.waitForURL("**/services/mobile-app-development");
   if (await page.getByRole("button", { name: "Close menu" }).count())
     throw new Error("Selecting a mobile service did not close the menu");

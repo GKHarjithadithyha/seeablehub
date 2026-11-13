@@ -2,7 +2,14 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, CheckCircle2, MoveRight, Sparkles } from "lucide-react";
 import { HeroArtwork } from "@/components/artwork";
 import { FAQList } from "@/components/faq-list";
-import { CTA, Eyebrow, IntroSplit, SectionHeading, ServicesGrid } from "@/components/sections";
+import {
+  CTA,
+  Eyebrow,
+  IntroSplit,
+  ResponsiveCopy,
+  SectionHeading,
+  ServicesGrid,
+} from "@/components/sections";
 
 export default function HomePage() {
   return (
@@ -11,15 +18,28 @@ export default function HomePage() {
         <div className="hero-copy">
           <Eyebrow>SOFTWARE COMPANY</Eyebrow>
           <h1>
-            Building Innovative
-            <br />
-            Software Solutions
-            <br />
-            for <span className="gradient-text">Modern Businesses</span>
+            <ResponsiveCopy
+              desktop={
+                <>
+                  Building Innovative
+                  <br />
+                  Software Solutions
+                  <br />
+                  for <span className="gradient-text">Modern Businesses</span>
+                </>
+              }
+              mobile={
+                <>
+                  Your Ideas Deserve to Be <span className="gradient-text">Seen.</span>
+                </>
+              }
+            />
           </h1>
           <p>
-            We design, develop and deliver custom software solutions that help businesses grow,
-            operate smarter and create lasting impact.
+            <ResponsiveCopy
+              desktop="We design, develop and deliver custom software solutions that help businesses grow, operate smarter and create lasting impact."
+              mobile="We build websites, software, AI-powered tools and connected digital experiences that help businesses move forward."
+            />
           </p>
           <div className="hero-actions">
             <Link className="button button-primary" href="/contact">
@@ -53,7 +73,7 @@ export default function HomePage() {
           copy="End-to-end software services tailored to your business needs."
           centered
         />
-        <ServicesGrid limit={4} />
+        <ServicesGrid limit={4} mobileLimit={8} />
         <div className="section-link">
           <Link className="text-link" href="/services">
             Explore all capabilities <ArrowUpRight size={17} />
@@ -64,6 +84,8 @@ export default function HomePage() {
         eyebrow="ABOUT SEEABLE HUB"
         title="A Technology Partner You Can Trust"
         copy="More than a development company, we’re a technology partner for businesses with ideas to bring to life. We combine thoughtful design and practical engineering to create digital solutions that serve a real purpose."
+        mobileTitle="Ideas Into Impact."
+        mobileCopy="We turn business ideas and challenges into practical digital solutions through design, engineering and innovation."
         bullets={[
           "Solutions shaped around your business",
           "Transparent collaboration from start to finish",
@@ -123,8 +145,10 @@ export default function HomePage() {
             </h2>
           </div>
           <p>
-            Being seen is not simply about visibility. It is about creating something meaningful
-            enough to make an impression. Build with purpose. Create with innovation. Be seen.
+            <ResponsiveCopy
+              desktop="Being seen is not simply about visibility. It is about creating something meaningful enough to make an impression. Build with purpose. Create with innovation. Be seen."
+              mobile="We build technology that solves problems, creates opportunities and helps businesses make an impact. Build with purpose. Create with innovation. Be seen."
+            />
           </p>
         </div>
       </section>
@@ -145,6 +169,8 @@ export default function HomePage() {
       <CTA
         title="Let’s Build Something Great Together"
         copy="Have an idea, a business challenge or a vision for something new? Let's turn it into technology that makes an impact."
+        mobileTitle="Have Something Worth Building?"
+        mobileCopy="Tell us what you want to create. Let’s turn it into technology that makes an impact."
       />
     </>
   );

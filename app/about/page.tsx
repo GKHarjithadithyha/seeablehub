@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Compass, Lightbulb, Target } from "lucide-react";
-import { CTA, Eyebrow, SectionHeading } from "@/components/sections";
+import { CTA, Eyebrow, ResponsiveCopy, SectionHeading } from "@/components/sections";
 import { Breadcrumbs } from "@/components/sections";
 import { ServicesGrid } from "@/components/sections";
 
@@ -40,10 +40,17 @@ export default function AboutPage() {
       <Breadcrumbs items={[{ label: "About" }]} />
       <section className="page-hero wrap">
         <Eyebrow>WHO WE ARE</Eyebrow>
-        <h1>We Build Technology That Moves Businesses Forward.</h1>
+        <h1>
+          <ResponsiveCopy
+            desktop="We Build Technology That Moves Businesses Forward."
+            mobile="Technology That Moves Businesses Forward."
+          />
+        </h1>
         <p>
-          Every great business begins with an idea. We bring the technology, expertise and digital
-          solutions to help turn those ideas into reality.
+          <ResponsiveCopy
+            desktop="Every great business begins with an idea. We bring the technology, expertise and digital solutions to help turn those ideas into reality."
+            mobile="We turn ideas into practical digital products, intelligent applications and meaningful experiences."
+          />
         </p>
         <div className="hero-actions">
           <Link className="button button-primary" href="/services">
@@ -65,20 +72,24 @@ export default function AboutPage() {
             <br />
             Defined by Innovation.
           </h2>
-          <p>
+          <p className="desktop-only-paragraph">
             Technology is constantly changing the way businesses operate, communicate and grow. We
             believe every business should have access to the right technology to make the most of
             these opportunities.
           </p>
-          <p>
+          <p className="desktop-only-paragraph">
             SEEABLE HUB was built around a simple belief: meaningful ideas deserve the opportunity
             to become something impactful. We bring together software engineering, creative thinking
             and emerging technologies to develop solutions that address real world challenges.
           </p>
-          <p>
+          <p className="desktop-only-paragraph">
             Our work spans websites, custom software, mobile applications, artificial intelligence,
             automation and connected digital experiences. We believe in building solutions that
             serve a purpose, create value and make a lasting difference.
+          </p>
+          <p className="mobile-only-paragraph">
+            We bring software engineering, creative thinking and emerging technologies together to
+            solve real business challenges.
           </p>
         </div>
       </section>
@@ -86,27 +97,42 @@ export default function AboutPage() {
         <div className="wrap vision-grid">
           <article>
             <Eyebrow>WHERE WE ARE GOING</Eyebrow>
-            <h2>A future where every great idea has the power to be seen.</h2>
+            <h2>
+              <ResponsiveCopy
+                desktop="A future where every great idea has the power to be seen."
+                mobile="Make Great Ideas Possible."
+              />
+            </h2>
             <p>
-              Our vision is to become a trusted technology partner for businesses and innovators,
-              empowering them to transform possibilities into meaningful digital solutions.
+              <ResponsiveCopy
+                desktop="Our vision is to become a trusted technology partner for businesses and innovators, empowering them to transform possibilities into meaningful digital solutions."
+                mobile="We aim to be a trusted technology partner, helping turn possibilities into useful digital solutions."
+              />
             </p>
           </article>
           <article>
             <Eyebrow>WHAT DRIVES US</Eyebrow>
-            <h2>Turning possibilities into practical technology.</h2>
+            <h2>
+              <ResponsiveCopy
+                desktop="Turning possibilities into practical technology."
+                mobile="Turn Possibilities Into Practical Technology."
+              />
+            </h2>
             <p>
-              Our mission is to design, develop and deliver innovative digital solutions that help
-              businesses operate smarter, connect better and grow sustainably.
+              <ResponsiveCopy
+                desktop="Our mission is to design, develop and deliver innovative digital solutions that help businesses operate smarter, connect better and grow sustainably."
+                mobile="We design digital solutions that help businesses operate smarter, connect better and grow."
+              />
             </p>
           </article>
         </div>
       </section>
       <section className="values-section wrap">
         <SectionHeading
-          eyebrow="THE MEANING BEHIND OUR TAGLINE"
+          eyebrow="OUR PHILOSOPHY"
           title="built to be seen."
           copy="Being seen is more than simply having a digital presence. It is about creating something meaningful, building something valuable and making an impression that lasts."
+          mobileCopy="We build with purpose, create with innovation and deliver technology that makes an impact."
           centered
         />
         <div className="value-grid">
@@ -134,6 +160,7 @@ export default function AboutPage() {
         <SectionHeading
           eyebrow="HOW WE WORK"
           title="A Clear Process. A Shared Vision. A Better Outcome."
+          mobileTitle="A Clear Process. A Shared Vision."
         />
         <div className="process-grid">
           {[
@@ -186,6 +213,8 @@ export default function AboutPage() {
       <CTA
         title="Your Next Big Idea Deserves to Be Built."
         copy="Let's start with your idea and build something meaningful together."
+        mobileTitle="Your Next Big Idea Deserves to Be Built."
+        mobileCopy="Let’s start with your idea and build something meaningful together."
       />
     </>
   );

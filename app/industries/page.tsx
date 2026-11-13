@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, MoveRight, Sparkles } from "lucide-react";
 import { HeroArtwork } from "@/components/artwork";
 import { IndustryBenefitCard, IndustryCard } from "@/components/industry-card";
-import { Breadcrumbs, CTA, Eyebrow, SectionHeading } from "@/components/sections";
+import { Breadcrumbs, CTA, Eyebrow, ResponsiveCopy, SectionHeading } from "@/components/sections";
 import { Reveal } from "@/components/reveal";
 import { industries, industryBenefits } from "@/data/industries";
 
@@ -27,12 +27,20 @@ export default function IndustriesPage() {
         <div className="industry-hero-copy">
           <Eyebrow>INDUSTRIES WE EMPOWER</Eyebrow>
           <h1>
-            Technology That Understands <span className="gradient-text">Your Industry.</span>
+            <ResponsiveCopy
+              desktop={
+                <>
+                  Technology That Understands <span className="gradient-text">Your Industry.</span>
+                </>
+              }
+              mobile="Technology That Adapts to Your Industry."
+            />
           </h1>
           <p>
-            Every industry has different challenges, workflows and ambitions. We build tailored
-            digital solutions that help businesses simplify operations, connect with customers and
-            move forward with confidence.
+            <ResponsiveCopy
+              desktop="Every industry has different challenges, workflows and ambitions. We build tailored digital solutions that help businesses simplify operations, connect with customers and move forward with confidence."
+              mobile="We start by understanding your business environment, then shape technology around your needs."
+            />
           </p>
           <div className="hero-actions">
             <Link className="button button-primary" href="/contact">
@@ -64,16 +72,25 @@ export default function IndustriesPage() {
             <h2>Built Around the Way Your Business Works.</h2>
           </div>
           <div className="industry-intro-copy">
-            <p className="industry-intro-lead">Great software isn&apos;t one-size-fits-all.</p>
-            <p>
+            <p className="industry-intro-lead">
+              <ResponsiveCopy
+                desktop="Great software isn’t one-size-fits-all."
+                mobile="We understand your business first."
+              />
+            </p>
+            <p className="desktop-only-paragraph">
               A retail business needs a better way to manage customers and orders. A healthcare
               organisation needs efficient systems and reliable information. A construction company
               needs better project visibility and coordination.
             </p>
-            <p>
+            <p className="desktop-only-paragraph">
               We understand that every business operates differently. That&apos;s why we approach
               every project with your industry&apos;s requirements, business objectives and
               customers in mind.
+            </p>
+            <p className="mobile-only-paragraph">
+              We understand your business environment, identify its needs and shape technology
+              around them.
             </p>
           </div>
         </div>
@@ -114,12 +131,25 @@ export default function IndustriesPage() {
               />
             ))}
           </Reveal>
+          <details className="mobile-industry-approach">
+            <summary>How we approach your industry</summary>
+            <ul>
+              {industryBenefits.map((benefit) => (
+                <li key={benefit.title}>
+                  <strong>{benefit.title}</strong>
+                  <span>{benefit.description}</span>
+                </li>
+              ))}
+            </ul>
+          </details>
         </div>
       </section>
 
       <CTA
         title="Your Industry. Your Challenges. Our Technology."
         copy="Let’s build a digital solution that works the way your business does. Tell us about your goals and we’ll help you explore the right digital approach."
+        mobileTitle="Discuss Your Industry Needs"
+        mobileCopy="Tell us what your business needs. We’ll explore the right technology together."
         buttonLabel="Let’s Build Something Together"
       />
     </>

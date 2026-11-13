@@ -14,6 +14,7 @@ export type Industry = {
   slug: string;
   name: string;
   description: string;
+  mobileDescription: string;
   solutions: string[];
   icon: LucideIcon;
 };
@@ -25,6 +26,7 @@ export const industries: Industry[] = [
     icon: Store,
     description:
       "Create better shopping experiences, streamline orders and bring your entire retail operation together.",
+    mobileDescription: "Digital experiences for retail businesses and online stores.",
     solutions: [
       "E-commerce platforms",
       "Inventory management",
@@ -39,6 +41,7 @@ export const industries: Industry[] = [
     name: "Healthcare & Wellness",
     icon: HeartPulse,
     description: "Make healthcare operations more connected, accessible and efficient.",
+    mobileDescription: "Websites and digital experiences for healthcare and wellness providers.",
     solutions: [
       "Hospital management systems",
       "Clinic management software",
@@ -53,6 +56,7 @@ export const industries: Industry[] = [
     name: "Education & Learning",
     icon: GraduationCap,
     description: "Build smarter learning experiences and simplify academic administration.",
+    mobileDescription: "Digital platforms for educational organisations and learning services.",
     solutions: [
       "School and college management systems",
       "Learning management systems",
@@ -67,6 +71,7 @@ export const industries: Industry[] = [
     name: "Real Estate & Construction",
     icon: Building2,
     description: "Bring projects, people and processes together through connected digital systems.",
+    mobileDescription: "Websites, project showcases and enquiry experiences.",
     solutions: [
       "Construction management systems",
       "Real estate CRM",
@@ -82,6 +87,7 @@ export const industries: Industry[] = [
     icon: Utensils,
     description:
       "Create memorable customer experiences while making daily operations easier to manage.",
+    mobileDescription: "Digital experiences for hotels, restaurants and hospitality businesses.",
     solutions: [
       "Restaurant management systems",
       "Digital menu platforms",
@@ -97,6 +103,7 @@ export const industries: Industry[] = [
     icon: BriefcaseBusiness,
     description:
       "Give your team better tools to manage clients, projects and everyday business operations.",
+    mobileDescription: "Digital platforms for consultants and service providers.",
     solutions: [
       "Customer relationship management",
       "Appointment booking platforms",
@@ -111,6 +118,7 @@ export const industries: Industry[] = [
     name: "Startups & Technology",
     icon: Rocket,
     description: "Turn ambitious ideas into scalable digital products.",
+    mobileDescription: "Product websites and technology solutions for growing ventures.",
     solutions: [
       "MVP development",
       "SaaS platforms",
@@ -127,6 +135,7 @@ export const industries: Industry[] = [
     icon: Factory,
     description:
       "Connect your operations, improve visibility and make business processes more efficient.",
+    mobileDescription: "Digital solutions for industrial and manufacturing organisations.",
     solutions: [
       "Manufacturing management systems",
       "Inventory and warehouse management",

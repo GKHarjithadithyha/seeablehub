@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Breadcrumbs, CTA, Eyebrow, SectionHeading, ServicesGrid } from "@/components/sections";
+import {
+  Breadcrumbs,
+  CTA,
+  Eyebrow,
+  ResponsiveCopy,
+  SectionHeading,
+  ServicesGrid,
+} from "@/components/sections";
 
 export const metadata: Metadata = {
   title: "Our Services | Software & AI Solutions",
@@ -20,12 +27,19 @@ export default function ServicesPage() {
       <Breadcrumbs items={[{ label: "Services" }]} />
       <section className="page-hero wrap">
         <Eyebrow>OUR TECHNOLOGY CAPABILITIES</Eyebrow>
-        <h1>Technology Solutions Built Around Your Ambition.</h1>
+        <h1>
+          <ResponsiveCopy
+            desktop="Technology Solutions Built Around Your Ambition."
+            mobile="Technology Built Around Your Ambition."
+          />
+        </h1>
         <p>
-          From custom software and website development to artificial intelligence and connected
-          digital experiences, we bring ideas to life through technology.
+          <ResponsiveCopy
+            desktop="From custom software and website development to artificial intelligence and connected digital experiences, we bring ideas to life through technology."
+            mobile="From websites and custom software to AI and connected experiences, we build solutions around real business needs."
+          />
         </p>
-        <p className="hero-support">
+        <p className="hero-support desktop-only-paragraph">
           We combine software engineering, creative thinking and modern technologies to develop
           solutions that help businesses innovate, operate efficiently and grow.
         </p>
@@ -90,6 +104,8 @@ export default function ServicesPage() {
       <CTA
         title="Have a Challenge? Let’s Find the Right Technology."
         copy="Tell us what you’re planning or trying to solve. We’ll explore the possibilities together."
+        mobileTitle="Have a Challenge? Let’s Find the Right Solution."
+        mobileCopy="Tell us what you’re planning. We’ll explore how technology can help."
       />
     </>
   );
